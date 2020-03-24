@@ -43,18 +43,18 @@ class CountryController extends Controller
 
         // add conditions that should always apply here
 
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-        ]);
-
-        $searchModel->load(Yii::$app->request->queryParams);
-        var_dump($searchModel);
-//        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-//
-//        return $this->render('index', [
-//            'searchModel' => $searchModel,
-//            'dataProvider' => $dataProvider,
+//        $dataProvider = new ActiveDataProvider([
+//            'query' => $query,
 //        ]);
+//
+//        $searchModel->load(Yii::$app->request->queryParams);
+//        var_dump($searchModel);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
     /**
